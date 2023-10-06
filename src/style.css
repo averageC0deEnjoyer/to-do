@@ -4,20 +4,100 @@
     box-sizing: border-box;
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-}
-
 .main {
     display: grid;
     grid-template-columns: 1fr 4fr;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(126,126,126);
 }
 
 .main .nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px;
+}
+
+.main .nav .nav-top{
 
 }
 
-.main .content {
+.main .nav .nav-top > h1 {
 
+}
+
+.main .nav .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.main .nav .project-list .project-list-detail {
+    display: flex;
+}
+
+.main .nav .project-list h2 {
+    margin-right: auto;
+}
+
+.main .nav .add-project {
+    text-align: right;
+}
+
+.main .content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.main .content .content-top{
+    display: flex;
+}
+
+.main .content .content-top .content-top-info {
+    margin-right: auto;
+}
+
+.main .content .content-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.main .content .content-main .content-card {
+    background-color: lightgreen;
+    width: clamp(100px,150px, 200px);
+    height: clamp(100px,150px, 200px);
+}
+
+.main .content .add-content {
+    text-align: right;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: blue;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: block;
 }

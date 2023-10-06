@@ -4,16 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main">
         <div class="nav">
-            <h1>Projects</h1>
+            <div class="nav-top">
+                <h1>Projects</h1>
+            </div>
+            <div class="divider">
+                <hr>
+            </div>
+            <div class="project-list">
+                <div class="project-list-detail">
+                    <h2>example1</h2>
+                    <button>delete</button>
+                </div>
+                <div class="project-list-detail">
+                    <h2>example2</h2>
+                    <button>delete</button>
+                </div>
+                <div class="project-list-detail">
+                    <h2>example3</h2>
+                    <button>delete</button>
+                </div>
+            </div>
+            <div class="add-project">
+                <button class="add-project-button">Add Project</button>
+            </div>
         </div>
         <div class="content">
-            <h1>test2</h1>
+            <div class="content-top">
+                <div class="content-top-info">
+                    <h1>Project name</h1>
+                    <h2>Project description</h2>
+                </div>
+                <div class="content-top-edit">
+                    <p>edit button</p>
+                </div>
+            </div>
+            <div class="content-main">
+                <div class="content-card">
+                    <h1>task</h1>
+                    <p>task desc</p>
+                </div>
+                <div class="content-card">
+                    <h1>task</h1>
+                    <p>task desc</p>
+                </div>
+                <div class="content-card">
+                    <h1>task</h1>
+                    <p>task desc</p>
+                </div>
+                <div class="content-card">
+                    <h1>task</h1>
+                    <p>task desc</p>
+                </div>
+                <div class="content-card">
+                    <h1>task</h1>
+                    <p>task desc</p>
+                </div>
+            </div>
+            <div class="add-content">
+                <button class="add-task">+ Add Task</button>
+            </div>
         </div>
+    </div>
+    <div class="modal">
+        <form>
+            <label for="project-name">Project Name</label>
+            <input type="text" id="project-name" name="projectName" class="project-name">
+            <label for="project-description">Project Description</label>
+            <input type="text" id="project-description" name="projectDesc" class="project-description">
+            <button class="submit-project-button">Submit</button>
+        </form>
     </div>
 </body>
 </html>
