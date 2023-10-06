@@ -16,16 +16,16 @@
             </div>
             <div class="project-list">
                 <div class="project-list-detail">
-                    <h2>example1</h2>
-                    <button>delete</button>
+                    <h2 class="project-title">example1</h2>
+                    <button class="delete-button">delete</button>
                 </div>
                 <div class="project-list-detail">
-                    <h2>example2</h2>
-                    <button>delete</button>
+                    <h2 class="project-title">example2</h2>
+                    <button class="delete-button">delete</button>
                 </div>
                 <div class="project-list-detail">
-                    <h2>example3</h2>
-                    <button>delete</button>
+                    <h2 class="project-title">example3</h2>
+                    <button class="delete-button">delete</button>
                 </div>
             </div>
             <div class="add-project">
@@ -35,42 +35,23 @@
         <div class="content">
             <div class="content-top">
                 <div class="content-top-info">
-                    <h1>Project name</h1>
-                    <h2>Project description</h2>
+                    <h1 class = 'content-top-project-name'>Project name</h1>
+                    <h2 class = 'content-top-project-description'>Project description</h2>
                 </div>
                 <div class="content-top-edit">
                     <p>edit button</p>
                 </div>
             </div>
             <div class="content-main">
-                <div class="content-card">
-                    <h1>task</h1>
-                    <p>task desc</p>
-                </div>
-                <div class="content-card">
-                    <h1>task</h1>
-                    <p>task desc</p>
-                </div>
-                <div class="content-card">
-                    <h1>task</h1>
-                    <p>task desc</p>
-                </div>
-                <div class="content-card">
-                    <h1>task</h1>
-                    <p>task desc</p>
-                </div>
-                <div class="content-card">
-                    <h1>task</h1>
-                    <p>task desc</p>
-                </div>
+                
             </div>
             <div class="add-content">
                 <button class="add-task">+ Add Task</button>
             </div>
         </div>
     </div>
-    <div class="modal">
-        <form>
+    <div class="modal new-project">
+        <form class="new-project-form">
             <label for="project-name">Project Name</label>
             <input type="text" id="project-name" name="projectName" class="project-name">
             <label for="project-description">Project Description</label>
@@ -78,5 +59,21 @@
             <button class="submit-project-button">Submit</button>
         </form>
     </div>
+    <div class="modal new-todo-task">
+        <form class="new-todo-form">
+            <label for="task-name">Task Name</label>
+            <input type="text" id="task-name" name="taskName" class="task-name">
+            <label for="task-description">Task Description</label>
+            <input type="text" id="task-description" name="taskDesc" class="task-description">
+            <label for="due-date">Due Date</label>
+            <input type="date" id="due-date" name="dueDate" class="due-date">
+            <label for="priority">Priority</label>
+            <input type="text" id="priority" name="priority" class="priority">
+            <label for="task-checkbox">Task Checkbox</label>
+            <input type="checkbox" id="task-checkbox" name="taskCheckbox" class="task-checkbox">
+            <button class="submit-task-button">Submit</button>
+        </form>
+    </div>
+    <div class="overlay"></div>
 </body>
 </html>

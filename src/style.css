@@ -39,6 +39,7 @@
 
 .main .nav .project-list h2 {
     margin-right: auto;
+    cursor: pointer;
 }
 
 .main .nav .add-project {
@@ -81,7 +82,7 @@
     text-align: right;
 }
 
-.modal {
+.modal.new-project {
     display: none;
     position: fixed;
     z-index: 5;
@@ -91,13 +92,53 @@
     background-color: blue;
 }
 
-.modal form {
+.modal.new-project form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.modal.active {
+.modal.new-project.active {
+    display: block;
+}
+
+.modal.new-todo-task {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: blue;
+}
+
+.modal.new-todo-task form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.new-todo-task.active {
+    display: block;
+}
+
+
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+     /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+  }
+
+.overlay.active {
     display: block;
 }
