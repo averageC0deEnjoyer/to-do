@@ -39,7 +39,7 @@
                     <h2 class = 'content-top-project-description'>Project description</h2>
                 </div>
                 <div class="content-top-edit">
-                    <p>edit button</p>
+                    <button class="edit-project-button">edit project</button>
                 </div>
             </div>
             <div class="content-main">
@@ -53,10 +53,19 @@
     <div class="modal new-project">
         <form class="new-project-form">
             <label for="project-name">Project Name</label>
-            <input type="text" id="project-name" name="projectName" class="project-name">
+            <input type="text" id="project-name" name="projectName" class="project-name" required>
             <label for="project-description">Project Description</label>
             <input type="text" id="project-description" name="projectDesc" class="project-description">
             <button class="submit-project-button">Submit</button>
+        </form>
+    </div>
+    <div class="modal edit-project">
+        <form class="edit-project-form">
+            <label for="edit-project-name">Edit Project Name</label>
+            <input type="text" id="edit-project-name" name="editProjectName" class="edit-project-name">
+            <label for="edit-project-description">Edit Project Description</label>
+            <input type="text" id="edit-project-description" name="editProjectDesc" class="edit-project-description">
+            <button class="submit-edit-project-button">Submit</button>
         </form>
     </div>
     <div class="modal new-todo-task">
@@ -65,13 +74,28 @@
             <input type="text" id="task-name" name="taskName" class="task-name">
             <label for="task-description">Task Description</label>
             <input type="text" id="task-description" name="taskDesc" class="task-description">
-            <label for="due-date">Due Date</label>
-            <input type="date" id="due-date" name="dueDate" class="due-date">
-            <label for="priority">Priority</label>
-            <input type="text" id="priority" name="priority" class="priority">
+            <label for="due-date-new-todo">Due Date</label>
+            <input type="date" id="due-date-new-todo" name="dueDate" class="due-date-new-todo">
+            <label for="priority-new-todo">Priority</label>
+            <input type="text" id="priority-new-todo" name="priority-new-todo" class="priority-new-todo">
             <label for="task-checkbox">Task Checkbox</label>
             <input type="checkbox" id="task-checkbox" name="taskCheckbox" class="task-checkbox">
             <button class="submit-task-button">Submit</button>
+        </form>
+    </div>
+    <div class="modal edit-todo-task">
+        <form class="edit-todo-form">
+            <label for="edit-task-name">Edit Task Name</label>
+            <input type="text" id="edit-task-name" name="editTaskName" class="edit-task-name">
+            <label for="edit-task-description">Edit Task Description</label>
+            <input type="text" id="task-description" name="editTaskDesc" class="edit-task-description">
+            <label for="edit-due-date">Edit Due Date</label>
+            <input type="date" id="edit-due-date" name="editDueDate" class="edit-due-date">
+            <label for="edit-priority">Edit Priority</label>
+            <input type="text" id="edit-priority" name="editPriority" class="edit-priority">
+            <label for="edit-task-checkbox">Edit Task Checkbox</label>
+            <input type="checkbox" id="edit-task-checkbox" name="editTaskCheckbox" class="edit-task-checkbox" value=1>
+            <button class="submit-edit-task-button">Submit Edit</button>
         </form>
     </div>
     <div class="overlay"></div>

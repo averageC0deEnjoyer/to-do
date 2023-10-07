@@ -103,6 +103,32 @@
     display: block;
 }
 
+
+
+.modal.edit-project {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: blue;
+}
+
+.modal.edit-project form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.edit-project.active {
+    display: block;
+}
+
+
+
+
 .modal.new-todo-task {
     display: none;
     position: fixed;
@@ -125,6 +151,28 @@
 }
 
 
+
+.modal.edit-todo-task {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: blue;
+}
+
+.modal.edit-todo-task form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.edit-todo-task.active {
+    display: block;
+}
+
 .overlay {
     position: fixed; /* Sit on top of the page content */
     display: none; /* Hidden by default */
@@ -141,4 +189,9 @@
 
 .overlay.active {
     display: block;
+}
+
+
+.edit-project, .content-card {
+    hover: pointer;
 }
