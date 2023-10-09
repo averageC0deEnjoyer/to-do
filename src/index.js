@@ -1,5 +1,6 @@
 //try factory function for the selectedProjectGlobal;
-
+//what i shouldve done to make this better. use form .add event listener so the validator from the input required works. create the function to render dont manually put in every eventlistener. can create EL while createtheelement, so dont have to use document.body and contains. 
+//learn about localStorage and date-fns package
 import './style.css';
 import Project from './javascript/project-constructor.js';
 import Todo from './javascript/todo-constructor.js';
@@ -8,40 +9,41 @@ import pushProjectToArrayProject from './javascript/push-project-to-array.js';
 import pushTodoToArrayTodo from './javascript/push-new-todo-to-project.js';
 import {addDays} from 'date-fns';
 
-const arrayProject = [];
+let arrayProject;
 let selectedProjectGlobal;
 let selectedTodoGlobal;
 
+if(localStorage.getItem('arrayProjectStringify') == null){
+    arrayProject = [];
+} else {
+    arrayProject = JSON.parse(window.localStorage.getItem('arrayProjectStringify'));
+}
 
+console.log(arrayProject);
+
+initializeDOMDisplay();
 function initializeDOMDisplay(){
-    let project1 = new Project('example1','test');
-    let project2 = new Project('example2','test2');
-    let project3 = new Project('example3','test3');
-    pushProjectToArrayProject(arrayProject, project1);
-    pushProjectToArrayProject(arrayProject, project2);
-    pushProjectToArrayProject(arrayProject, project3);
+    let editProjectBtn = document.querySelector('.edit-project-button');
+    let addTodoBtn = document.querySelector('.add-task');
+    let projectNavbarDOM = document.querySelector('.project-list');  
+    for(let i=0; i<arrayProject.length; i++) {
+        let project = document.createElement('div');
+        project.classList.add('project-list-detail');
+        let projectName = document.createElement('h2');
+        projectName.classList.add('project-title');
+        projectName.textContent = arrayProject[i].projectName;
+        let deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('delete-button');
+        deleteBtn.textContent = 'delete';
+        project.append(projectName);
+        project.append(deleteBtn);
+        projectNavbarDOM.append(project);
+    };
+    
 
-
-
-    let todo1 = new Todo('test1','test1','2023-07-10','low','1');
-    let todo2 = new Todo('test2','test2','2023-07-13','medium','0');
-    let todo3 = new Todo('test3','test3','2023-10-25','high','1');
-
-
-
-    pushTodoToArrayTodo(arrayProject[0].todo, todo1);
-    pushTodoToArrayTodo(arrayProject[0].todo, todo2);
-    pushTodoToArrayTodo(arrayProject[0].todo, todo3);
-    pushTodoToArrayTodo(arrayProject[1].todo, todo1);
-    pushTodoToArrayTodo(arrayProject[1].todo, todo2);
-
-
-    let contentTopProjectName = document.querySelector('.content-top-project-name');
-    let contentTopProjectDescription = document.querySelector('.content-top-project-description');
-    selectedProjectGlobal = arrayProject[0]; //currentProject State
-    contentTopProjectName.textContent = selectedProjectGlobal.projectName;
-    contentTopProjectDescription.textContent = selectedProjectGlobal.projectDescription;
-    displayArrayTodoDOM(selectedProjectGlobal.todo)
+    
+    editProjectBtn.classList.add('hide');
+    addTodoBtn.classList.add('hide');
 }
 
 hideEditProjectBtnAndAddTodoBtn();
@@ -99,6 +101,7 @@ submitNewProjectBtn.addEventListener('click', (event)=>{
             addNewProjectToNavBarDOM(arrayProject);
             clearArrayTodoDOM();
             showEditProjectBtnAndAddTodoBtn();
+            saveArrayProjectData();
         }
     } else {
         alert('Project already exists');
@@ -134,6 +137,7 @@ submitNewTodoBtn.addEventListener('click', (event)=> {
         //     changeTodoDOMBackgroundColor(todoDiv, todo.priority)
         // });
         selectedTodoGlobal = todo;
+        saveArrayProjectData();
     
     } else {
         alert('Todo already exists, please change Todo Name')
@@ -270,6 +274,7 @@ document.body.addEventListener('click', (event) => {
             displayArrayTodoDOM(selectedProjectGlobal.todo);
             modalEditTodo.classList.remove('active');
             overlay.classList.remove('active');
+            saveArrayProjectData();
         } else if (!isSameTodo) {
             if(!isTodoExists) {
                 changeTodoDescription(selectedTodoGlobal, editTodoName.value, editTodoDescription.value, editTodoDueDate.value, editTodoPriority.value, editTodoCheckbox.value);
@@ -277,6 +282,7 @@ document.body.addEventListener('click', (event) => {
                 displayArrayTodoDOM(selectedProjectGlobal.todo);
                 modalEditTodo.classList.remove('active');
                 overlay.classList.remove('active');
+                saveArrayProjectData();
             } else {
                 alert('Todo already exists! Choose another name')
             }
@@ -304,6 +310,7 @@ document.body.addEventListener('click', (event)=> {
         clearArrayTodoDOM();
         contentTopName.textContent = "";
         contentTopDescription.textContent = "";
+        saveArrayProjectData();
     }
 })
 
@@ -349,6 +356,7 @@ document.body.addEventListener('click', (event) => {
     if(event.target.classList.contains('delete-content-card-button')) {
         deleteTodoFromArrayTodo(selectedProjectGlobal, event.target.parentNode.firstChild.textContent);
         event.target.parentNode.remove();
+        saveArrayProjectData();
     }
 })
 
@@ -362,6 +370,7 @@ document.body.addEventListener('click', (event)=> {
         let editProjectDescriptionArea = document.querySelector('.edit-project-description');
         editProjectNameArea.value = selectedProjectName;
         editProjectDescriptionArea.value = selectedProjectDescription;
+        saveArrayProjectData();
     }
 })
 
@@ -397,6 +406,7 @@ submitEditProjectBtn.addEventListener('click', (event)=> {
         contentTopDescription.textContent = selectedProjectGlobal.projectDescription;
         modalEditProject.classList.remove('active');    
         overlay.classList.remove('active');
+        saveArrayProjectData();
     } else if (!isSameProject) {
         if(!isProjectExist){
             if(editProjectNameArea.value === "") {
@@ -422,6 +432,7 @@ submitEditProjectBtn.addEventListener('click', (event)=> {
             contentTopDescription.textContent = selectedProjectGlobal.projectDescription;
             modalEditProject.classList.remove('active');    
             overlay.classList.remove('active');
+            saveArrayProjectData();
         } else {
             alert('Project already exists');
         }
@@ -431,9 +442,9 @@ submitEditProjectBtn.addEventListener('click', (event)=> {
 
 
 
-document.body.addEventListener('click', ()=> {
-    console.log(arrayProject);
-})
+// document.body.addEventListener('click', ()=> {
+//     console.log(arrayProject);
+// })
 
 function changeTodoDOMBackgroundColor(element, priority, checkbox) {
     if(checkbox === '1') {
@@ -452,7 +463,7 @@ function changeTodoDOMBackgroundColor(element, priority, checkbox) {
     }
     
 }
-console.log(showNextSevenDaysTodo().thisWeekArrayTodo)
+// console.log(showNextSevenDaysTodo().thisWeekArrayTodo)
 
 function showNextSevenDaysTodo(){
     let thisWeekArrayTodo = [];
@@ -494,3 +505,13 @@ showNextSevenDaysTodoBtn.addEventListener('click',()=>{
 // }
 
 // testDate();
+
+
+function saveArrayProjectData(){
+    localStorage.setItem('arrayProjectStringify',JSON.stringify(arrayProject));
+}
+
+document.body.addEventListener('click', ()=> {
+    console.log(localStorage.getItem('arrayProjectStringify'))
+    // console.log(arrayProject);
+})
