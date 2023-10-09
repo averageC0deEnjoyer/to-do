@@ -14,8 +14,11 @@
             <div class="divider">
                 <hr>
             </div>
+            <div class="button-container">
+                <button class="next-seven-days-todo-button">Next Seven Days Todo</button>
+            </div>
             <div class="project-list">
-                <div class="project-list-detail">
+                <!-- <div class="project-list-detail">
                     <h2 class="project-title">example1</h2>
                     <button class="delete-button">delete</button>
                 </div>
@@ -26,7 +29,7 @@
                 <div class="project-list-detail">
                     <h2 class="project-title">example3</h2>
                     <button class="delete-button">delete</button>
-                </div>
+                </div> -->
             </div>
             <div class="add-project">
                 <button class="add-project-button">Add Project</button>
@@ -46,38 +49,45 @@
                 
             </div>
             <div class="add-content">
-                <button class="add-task">+ Add Task</button>
+                <button class="add-task">+ Add Todo</button>
             </div>
         </div>
     </div>
     <div class="modal new-project">
         <form class="new-project-form">
             <label for="project-name">Project Name</label>
-            <input type="text" id="project-name" name="projectName" class="project-name" required>
+            <input type="text" id="project-name" name="projectName" class="project-name" required autocomplete="off">
             <label for="project-description">Project Description</label>
-            <input type="text" id="project-description" name="projectDesc" class="project-description">
+            <input type="text" id="project-description" name="projectDesc" class="project-description"  autocomplete="off">
             <button class="submit-project-button">Submit</button>
         </form>
     </div>
     <div class="modal edit-project">
         <form class="edit-project-form">
             <label for="edit-project-name">Edit Project Name</label>
-            <input type="text" id="edit-project-name" name="editProjectName" class="edit-project-name">
+            <input type="text" id="edit-project-name" name="editProjectName" class="edit-project-name" required autocomplete="off">
             <label for="edit-project-description">Edit Project Description</label>
-            <input type="text" id="edit-project-description" name="editProjectDesc" class="edit-project-description">
+            <input type="text" id="edit-project-description" name="editProjectDesc" class="edit-project-description" autocomplete="off">
             <button class="submit-edit-project-button">Submit</button>
         </form>
     </div>
     <div class="modal new-todo-task">
         <form class="new-todo-form">
             <label for="task-name">Task Name</label>
-            <input type="text" id="task-name" name="taskName" class="task-name">
+            <input type="text" id="task-name" name="taskName" class="task-name" required autocomplete="off">
             <label for="task-description">Task Description</label>
-            <input type="text" id="task-description" name="taskDesc" class="task-description">
+            <input type="text" id="task-description" name="taskDesc" class="task-description" required autocomplete="off">
             <label for="due-date-new-todo">Due Date</label>
-            <input type="date" id="due-date-new-todo" name="dueDate" class="due-date-new-todo">
-            <label for="priority-new-todo">Priority</label>
-            <input type="text" id="priority-new-todo" name="priority-new-todo" class="priority-new-todo">
+            <input type="date" id="due-date-new-todo" name="dueDate" class="due-date-new-todo" required>
+            <!-- <label for="priority-new-todo">Priority</label>
+            <input type="text" id="priority-new-todo" name="priority-new-todo" class="priority-new-todo"> -->
+            <label for="priority-new-todo">Priority:</label>
+                <select id="priority-new-todo" class="priority-new-todo" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="emergency">Emergency!</option>
+                </select>
             <label for="task-checkbox">Task Checkbox</label>
             <input type="checkbox" id="task-checkbox" name="taskCheckbox" class="task-checkbox">
             <button class="submit-task-button">Submit</button>
@@ -86,13 +96,20 @@
     <div class="modal edit-todo-task">
         <form class="edit-todo-form">
             <label for="edit-task-name">Edit Task Name</label>
-            <input type="text" id="edit-task-name" name="editTaskName" class="edit-task-name">
+            <input type="text" id="edit-task-name" name="editTaskName" class="edit-task-name" required autocomplete="off">
             <label for="edit-task-description">Edit Task Description</label>
-            <input type="text" id="task-description" name="editTaskDesc" class="edit-task-description">
+            <input type="text" id="task-description" name="editTaskDesc" class="edit-task-description" required autocomplete="off">
             <label for="edit-due-date">Edit Due Date</label>
-            <input type="date" id="edit-due-date" name="editDueDate" class="edit-due-date">
-            <label for="edit-priority">Edit Priority</label>
-            <input type="text" id="edit-priority" name="editPriority" class="edit-priority">
+            <input type="date" id="edit-due-date" name="editDueDate" class="edit-due-date" required>
+            <!-- <label for="edit-priority">Edit Priority</label>
+            <input type="text" id="edit-priority" name="editPriority" class="edit-priority"> -->
+            <label for="edit-priority">Edit Priority:</label>
+                <select id="edit-priority" class="edit-priority" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                    <option value="emergency">Emergency!</optio n>
+                </select>
             <label for="edit-task-checkbox">Edit Task Checkbox</label>
             <input type="checkbox" id="edit-task-checkbox" name="editTaskCheckbox" class="edit-task-checkbox" value=1>
             <button class="submit-edit-task-button">Submit Edit</button>
